@@ -1,0 +1,24 @@
+* Biologiczne JPKS.
+
+** Protokół
+  
+   Protokół na którym działa bioJPKS jest bardzo prosty
+
+*** Informacja o statusie odpowiedzi
+    
+    Serwer odpowiada o odpowiedz dopiero w momencie udzielenia poprawnej odpowiedzi na pytanie
+    liniją =OK= jeżeli padła poprawna odpowiedz od gracza lub =BAD= w przypadku gdy nie padła poprawna odpowiedz
+
+*** Zadawanie pytań
+
+    Serwer informuje o zadanie pytania linijką =QUESTION= po której następuje liczba =q=
+    informująca i ilości lini jakie zawiera pytanie. Od nastepnej lini w kolejnych =q= liniach znajduje się pytanie.
+
+**** 
+     Ostatnia linia może zawierać URL z który może zawierać obrazek.
+
+*** Informacje o zawdonikach
+
+    W pierwszej lini znajduje się zliczba *n* informująca o ilości zawodników aktualnie 
+    biorących udział w rozgrywce. Po niej następuje *n* lini w postaci
+    =k nick= gdzie *k* jest liczbą zdobyta przez gracza przestawiającego się jako *nick*
