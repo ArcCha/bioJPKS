@@ -36,6 +36,7 @@ public class FileQuestionRepository implements QuestionReposiotry
         {
             log.log(Level.SEVERE, "Plik bazy nie został odnaleziony", e);
         }
+        log.info("Loading has been completed");
     }
 
     public void load(Reader stream)
@@ -45,6 +46,7 @@ public class FileQuestionRepository implements QuestionReposiotry
         {
             String question = scanner.nextLine();
             String answare = scanner.nextLine();
+            log.info("\nQ: " + question + "\nA: " + answare);
             repo.put(repo.size(), new Question(question, answare));
         }
         scanner.close();

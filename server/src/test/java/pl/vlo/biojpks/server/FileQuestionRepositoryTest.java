@@ -1,7 +1,6 @@
 package pl.vlo.biojpks.server;
 
-import static org.junit.Assert.*;
-import static org.fest.assertions.Assertions.*;
+import static org.fest.assertions.Assertions.assertThat;
 
 import java.io.File;
 import java.io.FileWriter;
