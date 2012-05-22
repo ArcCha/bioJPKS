@@ -9,7 +9,7 @@ public class MainTest
     @Test
     public void testGet()
     {
-        Main main = new Main();
+        Client main = new Client();
         assertThat(main.get()).isEqualTo(0);
     }
 
