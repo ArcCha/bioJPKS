@@ -54,9 +54,18 @@ public class Client
 	public static void main(String[] args)
 	{
 		Client client = new Client();
-		while(socket.isConnected())
+		while(socket.isConnected() && scan.hasNextLine())
 		{
-			scan.nextLine();
+			command = scan.nextLine();
+			switch (command)	//Java 7 daje możliwość porównywania stringów, o ile się nie mylę.
+			{
+				case "QUESTION":
+					
+					break;
+
+				default:
+					break;
+			}
 		}
 	}
 }
