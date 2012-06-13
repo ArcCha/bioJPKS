@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 public class Client
 {
-	private static final int port = 6667;
-	private static final String host = "lol";
-	private Socket socket;
-	private PrintWriter writer;
-	private Scanner scan;
+	private static final int	port	= 6667;
+	private static final String	host	= "lol";
+	private Socket				socket;
+	private PrintWriter			writer;
+	private Scanner				scan;
 
 	/**
 	 * 
@@ -22,39 +22,37 @@ public class Client
 		super();
 		try
 		{
-			socket = new Socket(host, port);	//host?
+			socket = new Socket(host, port); // host?
 			writer = new PrintWriter(socket.getOutputStream());
 			scan = new Scanner(socket.getInputStream());
 		}
 		catch (UnknownHostException e)
-    	{
-    		System.err.println("Hostname unknown.");
-    	}
-    	catch (IOException e)
-    	{
-    		System.err.println("IO is missing.");
-    	}
+		{
+			System.err.println("Hostname unknown.");
+		}
+		catch (IOException e)
+		{
+			System.err.println("IO is missing.");
+		}
 	}
 
 	protected void finalize()
 	{
 		writer.close();
-    	scan.close();
-    	try
+		scan.close();
+		try
 		{
 			socket.close();
 		}
 		catch (IOException e)
 		{
-	  		System.err.println("IO is missing.");
+			System.err.println("IO is missing.");
 			e.printStackTrace();
 		}
 	}
 
-
-
 	public static void main(String[] args)
-    {
-   		Client client = new Client();
-    }
+	{
+		Client client = new Client();
+	}
 }
