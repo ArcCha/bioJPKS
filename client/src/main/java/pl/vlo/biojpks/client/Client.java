@@ -1,35 +1,60 @@
 package pl.vlo.biojpks.client;
 
-import java.io.*;
-import java.net.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Scanner;
 
 public class Client
 {
-    public static void main(String[] args) throws IOException
-    {
-    	Socket socket;
-    	PrintWriter writer;
-    	Scanner scan;
-    	
-    	try
+	private static final int port = 6667;
+	private static final String host = "lol";
+	private Socket socket;
+	private PrintWriter writer;
+	private Scanner scan;
+
+	/**
+	 * 
+	 */
+	public Client()
+	{
+		super();
+		try
+		{
+			socket = new Socket(host, port);	//host?
+			writer = new PrintWriter(socket.getOutputStream());
+			scan = new Scanner(socket.getInputStream());
+		}
+		catch (UnknownHostException e)
     	{
-    		socket = new Socket(host, port); //ogarnąć jaki ma być host, a port i tak nie ustalony
-    		writer = new PrintWriter(socket.getOutputStream());
-    		scan = new Scanner(socket.getInputStream());
-    	}
-    	catch (UnknownHostException e)
-    	{
-    		System.err.println("Nie znany host");
+    		System.err.println("Hostname unknown.");
     	}
     	catch (IOException e)
     	{
-    		System.err.println("Nie da sie dostac I/O z serwera");
+    		System.err.println("IO is missing.");
     	}
-    	
-    	
-    	writer.close();
+	}
+
+	protected void finalize()
+	{
+		writer.close();
     	scan.close();
-    	socket.close();
+    	try
+		{
+			socket.close();
+		}
+		catch (IOException e)
+		{
+	  		System.err.println("IO is missing.");
+			e.printStackTrace();
+		}
+	}
+
+
+
+	public static void main(String[] args)
+    {
+   		Client client = new Client();
     }
 }
