@@ -10,10 +10,10 @@ public class Client
 {
 	private static final int	port	= 6667;
 	private static final String	host	= "lol";
-	private Socket				socket;
-	private PrintWriter			writer;
-	private Scanner				scan;
-
+	private static Socket				socket;
+	private static PrintWriter			writer;
+	private static Scanner				scan;
+	private static String command;
 	/**
 	 * 
 	 */
@@ -54,5 +54,9 @@ public class Client
 	public static void main(String[] args)
 	{
 		Client client = new Client();
+		while(socket.isConnected())
+		{
+			scan.nextLine();
+		}
 	}
 }

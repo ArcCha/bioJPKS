@@ -26,3 +26,10 @@
     =k nick= gdzie *k* jest liczbą zdobyta przez gracza przestawiającego się jako *nick*. *nick* jest zakończony znakiem nowej lini.
     System nie pozwala na używanie nicków zawierających nową linię.
     
+**Uwagi
+
+	Nie ma tu chyba lepszych możliwości dyskusji, więc modyfikuję readme.
+	Uważam, że warto by wprowadzić modyfikacje do protokołu.
+	1) Tokeny powinny być w osobnych liniach.
+	2) Token =IMAGE= powinien być zawsze przesyłany, a w wypadku, gdy nie chcemy żadnego innego obrazka, w następnej linii powinien znajdować się 
+	tekst =DEFAULT=.
