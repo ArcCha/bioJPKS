@@ -1,5 +1,11 @@
 package pl.vlo.biojpks.client;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+
 public class Client
 {
 	private static final int	port	= 6667;
@@ -8,9 +14,10 @@ public class Client
 	private static PrintWriter	writer;
 	private static Scanner		scan;
 	private static String		command;
-	private static Question question;
-	private static Status status;
-	private static ClientGUI gui;
+	private static Question		question;
+	private static Status		status;
+	private static ClientGUI	gui;
+
 	/**
 	 * 
 	 */
@@ -54,8 +61,7 @@ public class Client
 		while (socket.isConnected() && scan.hasNextLine())
 		{
 			command = scan.nextLine();
-			switch (command)
-			// Java 7 daje możliwość porównywania stringów, o ile się nie mylę.
+			switch (command) // Java 7 daje możliwość porównywania stringów, o ile się nie mylę.
 			{
 				case "QUESTION":
 
