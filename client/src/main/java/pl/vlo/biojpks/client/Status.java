@@ -14,8 +14,8 @@ public class Status
 	Player[]	players;
 
 	/**
-	 * @param nPlayers
-	 * @param players
+	 * @param nPlayers - liczba graczy
+	 * @param players	- tablica z graczami
 	 */
 	public Status(int nPlayers, Player[] players)
 	{

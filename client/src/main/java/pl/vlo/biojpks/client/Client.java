@@ -16,7 +16,8 @@ public class Client
 	private static String		command;
 	private static Question		question;
 	private static Status		status;
-	private static ClientGUI	gui;
+	private ClientGUI			gui;
+	private static Player		player;
 
 	/**
 	 * 
@@ -24,6 +25,7 @@ public class Client
 	public Client()
 	{
 		super();
+		gui = new ClientGUI();
 		try
 		{
 			socket = new Socket(host, port); // host?
@@ -54,14 +56,19 @@ public class Client
 			e.printStackTrace();
 		}
 	}
-
+	
+	public int get()
+	{
+		return 1;
+	}
 	public static void main()
 	{
 		Client client = new Client();
 		while (socket.isConnected() && scan.hasNextLine())
 		{
 			command = scan.nextLine();
-			switch (command) // Java 7 daje możliwość porównywania stringów, o ile się nie mylę.
+			switch (command)
+			// Java 7 daje możliwość porównywania stringów, o ile się nie mylę.
 			{
 				case "QUESTION":
 
