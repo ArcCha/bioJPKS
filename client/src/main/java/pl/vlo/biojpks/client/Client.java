@@ -86,6 +86,7 @@ public class Client
 
 					break;
 				default:
+					System.out.println("cos sie wykrzaczylo");
 					break;
 			}
 		}

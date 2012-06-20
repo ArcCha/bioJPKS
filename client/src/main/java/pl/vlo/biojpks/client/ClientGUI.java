@@ -4,6 +4,7 @@
 package pl.vlo.biojpks.client;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -21,12 +22,13 @@ import javax.swing.JTextArea;
 public class ClientGUI extends JFrame implements ActionListener
 {
 
-	private JPanel		window;
-	private JTextArea	que;	// pytanie
-	private JTextArea	chat;	// chat glowny
-	private JTextArea	input;	// linijka do wprowadzania
-	private JTextArea	stat;	// status
-	private JLabel		img;	// element na obrazek
+	private BorderLayout	layout;
+	private JPanel			window;
+	private JTextArea		que;	// pytanie
+	private JTextArea		chat;	// chat glowny
+	private JTextArea		input;	// linijka do wprowadzania
+	private JTextArea		stat;	// status
+	private JLabel			img;	// element na obrazek
 
 	/**
 	 * @throws HeadlessException
@@ -34,9 +36,10 @@ public class ClientGUI extends JFrame implements ActionListener
 	public ClientGUI()
 	{
 		super();
-		BorderLayout layout = new BorderLayout();
+		layout = new BorderLayout();
+
 		window = new JPanel(layout);
-		window.setPreferredSize(new Dimension(800, 600));
+		// window.setPreferredSize(new Dimension(800, 600));
 		add(window);
 
 		que = new JTextArea("PYTANIE");
