@@ -18,6 +18,7 @@ public class Client
 	private static Status		status;
 	private ClientGUI			gui;
 	private static Player		player;
+	private static Protocol		protocol;
 
 	/**
 	 * 
@@ -56,39 +57,29 @@ public class Client
 			e.printStackTrace();
 		}
 	}
-	
+
 	public int get()
 	{
 		return 1;
 	}
+
+	public String poll()
+	{
+		String tmp = "err";
+		while(!socket.isClosed())
+		{
+			if(scan.hasNextLine())
+			{
+				tmp = scan.nextLine();
+				return tmp;
+			}
+		}
+		return tmp;
+	}
+	
 	public static void main()
 	{
 		Client client = new Client();
-		while (socket.isConnected() && scan.hasNextLine())
-		{
-			command = scan.nextLine();
-			switch (command)
-			// Java 7 daje możliwość porównywania stringów, o ile się nie mylę.
-			{
-				case "QUESTION":
-
-					break;
-				case "IMAGE":
-
-					break;
-				case "STATUS":
-
-					break;
-				case "OK":
-
-					break;
-				case "BAD":
-
-					break;
-				default:
-					System.out.println("cos sie wykrzaczylo");
-					break;
-			}
-		}
+		protocol = new Protocol();
 	}
 }

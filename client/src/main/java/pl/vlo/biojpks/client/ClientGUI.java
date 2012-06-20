@@ -66,17 +66,6 @@ public class ClientGUI extends JFrame implements ActionListener
 		setVisible(true);
 	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args)
-	{
-		ClientGUI test = new ClientGUI();
-
-		// TODO Auto-generated method stub
-
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
