@@ -32,8 +32,9 @@ public class Client
 
 	public static void main(String[] args)
 	{
-		Client client = new Client();
-		while (true)
+		//Client client = new Client();
+		ClientGUI test = new ClientGUI();
+		while (true)	//nie mam  lepszego pomyslu jak to zatrzymac zeby mi nie znikalo od razu.
 		{
 			
 		}

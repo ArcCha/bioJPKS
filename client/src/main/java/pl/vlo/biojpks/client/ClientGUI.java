@@ -4,6 +4,7 @@
 package pl.vlo.biojpks.client;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,7 +38,8 @@ public class ClientGUI extends JFrame implements ActionListener
 	{
 		super();
 		layout = new BorderLayout();
-
+		setPreferredSize(new Dimension(800, 600));
+		
 		window = new JPanel(layout);
 		// window.setPreferredSize(new Dimension(800, 600));
 		add(window);
