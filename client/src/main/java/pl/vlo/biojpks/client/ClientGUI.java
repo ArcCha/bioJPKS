@@ -22,6 +22,9 @@ import javax.swing.JTextArea;
 public class ClientGUI extends JFrame implements ActionListener
 {
 
+	/**
+	 * 
+	 */
 	private BorderLayout	layout;
 	private JPanel			window;
 	private JTextArea		que;	// pytanie
