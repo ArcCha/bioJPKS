@@ -63,14 +63,11 @@ public class Protocol
 			case QUESTION:
 				return new QuestionParser(scanner);
 			case IMAGE:
-				
-				break;
+				return new ImageParser(scanner);
 			case BAD:		//tak sobie mysle, czy nie lepiej by bylo dac jakas superkomende w protokole nad tym.
-				
-				break;
+				throw new RuntimeErrorException(null, "W fazie rozkminy");
 			case OK:
-				
-				break;
+				throw new RuntimeErrorException(null, "W fazie rozkminy");
 			case STATUS:
 				return new StatusParser(scanner);
 		}
@@ -102,7 +99,7 @@ public class Protocol
 				}
 			}
 		}
-		return Command.NULL;
+		throw new RuntimeErrorException(null, "Parsing incoming command failed");
 	}
 
 	private Question parseQuestion()

@@ -21,10 +21,9 @@ public class QuestionParser extends Parser
 	 * @see pl.vlo.biojpks.client.Parser#parse()
 	 */
 	@Override
-	public void parse()
+	public Question parse()
 	{
-		// TODO Auto-generated method stub
-		throw new RuntimeException();
+		return new Question(scanner.nextLine(), scanner.nextLine());
 	}
 
 }
