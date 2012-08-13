@@ -19,5 +19,5 @@ public abstract class Parser
 		this.scanner = scanner;
 	}
 
-	public abstract void parse();
+	public abstract GameObject parse();
 }

@@ -1,25 +1,27 @@
 /**
  * 
  */
-
 package pl.vlo.biojpks.client;
 
 import java.util.Scanner;
 
 /**
  * @author arccha
- * 
+ *
  */
-public class StatusParser extends Parser
+public class ImageParser extends Parser
 {
-	public StatusParser(Scanner scanner)
+
+	/**
+	 * @param scanner
+	 */
+	public ImageParser(Scanner scanner)
 	{
 		super(scanner);
 		// TODO Auto-generated constructor stub
 	}
 
-	/*
-	 * (non-Javadoc)
+	/* (non-Javadoc)
 	 * @see pl.vlo.biojpks.client.Parser#parse()
 	 */
 	@Override

@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 package pl.vlo.biojpks.client;
 
 /**
@@ -8,19 +9,10 @@ package pl.vlo.biojpks.client;
  *         niego punktów.
  * 
  */
-public class Player
+public class Player extends GameObject implements Showable
 {
 	String	nick;
 	int		points;
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString()
-	{
-		return getPoints() + "   " + getNick();
-	}
 
 	public Player(String nick)
 	{
@@ -37,7 +29,8 @@ public class Player
 	}
 
 	/**
-	 * @param nick the nick to set
+	 * @param nick
+	 *            the nick to set
 	 */
 	public void setNick(String nick)
 	{
@@ -53,11 +46,19 @@ public class Player
 	}
 
 	/**
-	 * @param points the points to set
+	 * @param points
+	 *            the points to set
 	 */
 	public void setPoints(int points)
 	{
 		this.points = points;
+	}
+
+	@Override
+	public void showInGame(ClientGUI gui)
+	{
+		// TODO Auto-generated method stub
+		throw new RuntimeException();
 	}
 
 }

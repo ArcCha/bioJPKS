@@ -10,7 +10,7 @@ import javax.management.RuntimeErrorException;
  *         ClientGUI.
  * 
  */
-public class Status implements Showable
+public class Status extends GameObject implements Showable
 {
 	int			nPlayers;
 	Player[]	players;
