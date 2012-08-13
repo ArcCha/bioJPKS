@@ -23,8 +23,7 @@ public class Client
 	}
 
 	/**
-	 * 	@author arccha
-	 * 		Ta metoda ma sluchac serwera i reagowac na komedny.
+	 * @author arccha Ta metoda ma sluchac serwera i reagowac na komedny.
 	 */
 	private void listenEventServer()
 	{

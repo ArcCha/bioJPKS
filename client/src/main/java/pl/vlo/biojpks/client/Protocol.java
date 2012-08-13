@@ -1,6 +1,7 @@
 /** 
  * 
  */
+
 package pl.vlo.biojpks.client;
 
 import java.io.IOException;
@@ -19,11 +20,10 @@ public class Protocol
 		STATUS, QUESTION, OK, BAD, IMAGE, NULL;
 	}
 
-	private Command			command;
-	private Socket			socket;
-	private Scanner			scan;
-	private PrintWriter		printer;
-	
+	private Socket		socket;
+	private Scanner		scan;
+	private PrintWriter	printer;
+
 	public Protocol(Connection connection)
 	{
 		this.socket = connection.getSocket();
@@ -39,7 +39,7 @@ public class Protocol
 		}
 	}
 
-	public Showable poll()
+	public void poll() // czemu showable?
 	{
 		return parse(whatCome());
 	}
@@ -48,9 +48,14 @@ public class Protocol
 	 * @param whatCome
 	 * @return
 	 */
-	private Showable parse(Command whatCome)
+	private void parse(Command whatCome)
 	{
-		
+
+	}
+
+	private void chooseParser()
+	{
+
 	}
 
 	/**
@@ -66,34 +71,19 @@ public class Protocol
 				switch (tmp)
 				{
 					case "QUESTION":
-						command = Command.QUESTION;
-						break;
+						return Command.QUESTION;
 					case "IMAGE":
-						command = Command.IMAGE;
-						break;
+						return Command.IMAGE;
 					case "BAD":
-						command = Command.BAD;
-						break;
+						return Command.BAD;
 					case "OK":
-						command = Command.OK;
-						break;
+						return Command.OK;
 					case "STATUS":
-						command = Command.STATUS;
-						break;
+						return Command.STATUS;
 				}
 			}
 		}
-		return command;
-	}
-
-	private void chooseParser()
-	{
-		switch (command)
-		{
-			case QUESTION :
-								break;
-			
-		}
+		return Command.NULL;
 	}
 
 	private Question parseQuestion()
