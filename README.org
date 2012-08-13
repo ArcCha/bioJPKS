@@ -31,5 +31,10 @@
 	Nie ma tu chyba lepszych możliwości dyskusji, więc modyfikuję readme.
 	Uważam, że warto by wprowadzić modyfikacje do protokołu.
 	1) Tokeny powinny być w osobnych liniach.
-	2) Token =IMAGE= powinien być zawsze przesyłany, a w wypadku, gdy nie chcemy żadnego innego obrazka, w następnej linii powinien znajdować się 
-	tekst =DEFAULT=.
+	2) Token =IMAGE= powinien być zawsze przesyłany, a w wypadku, gdy nie chcemy żadnego innego obrazka, w następnej linii powinien znajdować się tekst =DEFAULT=.
+
+	Po długiej przerwie kończymy projekt:)
+	Uważam, że dobrze by było wsadzić nad =OK= i =BAD= jakąś 
+nadkomendę. Jednak nie jestem pewien następstw, więc narazie wbijam w 
+kodzie RuntimeErrory.
+
