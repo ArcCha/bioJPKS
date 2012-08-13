@@ -41,19 +41,19 @@ public class Protocol
 		}
 	}
 
-	public void poll() // czemu showable?
+	public GameObject poll() // czemu showable?
 	{
-		throw new RuntimeErrorException(null);
-		//return parse(chooseParser{whatCome()));
+		return parse(chooseParser(whatCome()));
 	}
 
 	/**
 	 * @param whatCome
 	 * @return
 	 */
-	private void parse(Parser parser)
+	private GameObject parse(Parser parser)
 	{
-
+			GameObject gameobject = parser.parse();
+			return gameobject;
 	}
 
 	private Parser chooseParser(Command whatCome)
@@ -64,10 +64,10 @@ public class Protocol
 				return new QuestionParser(scanner);
 			case IMAGE:
 				return new ImageParser(scanner);
-			case BAD:		//tak sobie mysle, czy nie lepiej by bylo dac jakas superkomende w protokole nad tym.
-				throw new RuntimeErrorException(null, "W fazie rozkminy");
+			case BAD:
+				return new GoodOrNotParser(scanner);
 			case OK:
-				throw new RuntimeErrorException(null, "W fazie rozkminy");
+				return new GoodOrNotParser(scanner);
 			case STATUS:
 				return new StatusParser(scanner);
 		}
@@ -101,10 +101,4 @@ public class Protocol
 		}
 		throw new RuntimeErrorException(null, "Parsing incoming command failed");
 	}
-
-	private Question parseQuestion()
-	{
-		return new Question(scanner.nextLine(), scanner.nextLine());
-	}
-
 }
