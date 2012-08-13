@@ -9,6 +9,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
+import javax.management.RuntimeErrorException;
+
 /**
  * @author arccha Klasa ogarniająca protokół.
  * 
@@ -21,7 +23,7 @@ public class Protocol
 	}
 
 	private Socket		socket;
-	private Scanner		scan;
+	private Scanner		scanner;
 	private PrintWriter	printer;
 
 	public Protocol(Connection connection)
@@ -29,7 +31,7 @@ public class Protocol
 		this.socket = connection.getSocket();
 		try
 		{
-			scan = new Scanner(socket.getInputStream());
+			scanner = new Scanner(socket.getInputStream());
 			printer = new PrintWriter(socket.getOutputStream());
 		}
 		catch (IOException e)
@@ -41,21 +43,38 @@ public class Protocol
 
 	public void poll() // czemu showable?
 	{
-		return parse(whatCome());
+		throw new RuntimeErrorException(null);
+		//return parse(chooseParser{whatCome()));
 	}
 
 	/**
 	 * @param whatCome
 	 * @return
 	 */
-	private void parse(Command whatCome)
+	private void parse(Parser parser)
 	{
 
 	}
 
-	private void chooseParser()
+	private Parser chooseParser(Command whatCome)
 	{
-
+		switch (whatCome)
+		{
+			case QUESTION:
+				return new QuestionParser(scanner);
+			case IMAGE:
+				
+				break;
+			case BAD:		//tak sobie mysle, czy nie lepiej by bylo dac jakas superkomende w protokole nad tym.
+				
+				break;
+			case OK:
+				
+				break;
+			case STATUS:
+				return new StatusParser(scanner);
+		}
+		throw new RuntimeErrorException(null, "Could not determine proper parser");
 	}
 
 	/**
@@ -65,9 +84,9 @@ public class Protocol
 	{
 		while (socket.isConnected())
 		{
-			if (scan.hasNextLine())
+			if (scanner.hasNextLine())
 			{
-				String tmp = scan.nextLine();
+				String tmp = scanner.nextLine();
 				switch (tmp)
 				{
 					case "QUESTION":
@@ -88,7 +107,7 @@ public class Protocol
 
 	private Question parseQuestion()
 	{
-		return new Question(scan.nextLine(), scan.nextLine());
+		return new Question(scanner.nextLine(), scanner.nextLine());
 	}
 
 }
