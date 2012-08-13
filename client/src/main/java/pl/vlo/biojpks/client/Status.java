@@ -3,12 +3,14 @@
  */
 package pl.vlo.biojpks.client;
 
+import javax.management.RuntimeErrorException;
+
 /**
  * @author arccha Klasa przechowująca status obecny gry. Most między Client a
  *         ClientGUI.
  * 
  */
-public class Status
+public class Status implements Showable
 {
 	int			nPlayers;
 	Player[]	players;
@@ -24,6 +26,15 @@ public class Status
 		super();
 		this.nPlayers = nPlayers;
 		this.players = players;
+	}
+
+	/* (non-Javadoc)
+	 * @see pl.vlo.biojpks.client.Showable#showInGame(pl.vlo.biojpks.client.ClientGUI)
+	 */
+	@Override
+	public void showInGame(ClientGUI gui)
+	{
+		throw new RuntimeException();
 	}
 
 }

@@ -7,7 +7,7 @@ package pl.vlo.biojpks.client;
  * @author arccha Klasa, która ma za zadanie przechowywać pytanie i powiązane
  *         informacje. Służy za swoisty most między Client a ClientGUI.
  */
-public class Question
+public class Question implements Showable
 {
 	String	question;
 	String	answer;
@@ -52,9 +52,17 @@ public class Question
 	 */
 	public Question(String question, String answer)
 	{
-		super();
 		this.question = question;
 		this.answer = answer;
+	}
+
+	/* (non-Javadoc)
+	 * @see pl.vlo.biojpks.client.Showable#showInGame(pl.vlo.biojpks.client.ClientGUI)
+	 */
+	@Override
+	public void showInGame(ClientGUI gui)
+	{
+		throw new RuntimeException();
 	}
 
 }

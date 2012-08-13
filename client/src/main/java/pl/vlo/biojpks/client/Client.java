@@ -1,37 +1,27 @@
 package pl.vlo.biojpks.client;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Scanner;
 
 public class Client
 {
-	private static final int	port	= 6667;
-	private static final String	host	= "lol";
-	private static Socket		socket;
-	private static PrintWriter	writer;
-	private static Scanner		scan;
-	private static String		command;
-	private static Question		question;
-	private static Status		status;
+	private Connection connection;	
 	private ClientGUI			gui;
-	private static Player		player;
-	private static Protocol		protocol;
-
+	private Protocol		protocol;
+	
 	/**
 	 * 
 	 */
 	public Client()
 	{
 		super();
+		connection = new Connection();
+		protocol = new Protocol(connection);
 		gui = new ClientGUI();
 		try
 		{
-			socket = new Socket(host, port); // host?
-			writer = new PrintWriter(socket.getOutputStream());
-			scan = new Scanner(socket.getInputStream());
+			socket = new Socket(Connection.host, Connection.port); // host?
 		}
 		catch (UnknownHostException e)
 		{
@@ -45,8 +35,6 @@ public class Client
 
 	protected void finalize()
 	{
-		writer.close();
-		scan.close();
 		try
 		{
 			socket.close();
@@ -62,24 +50,18 @@ public class Client
 	{
 		return 1;
 	}
-
-	public String poll()
-	{
-		String tmp = "err";
-		while(!socket.isClosed())
-		{
-			if(scan.hasNextLine())
-			{
-				tmp = scan.nextLine();
-				return tmp;
-			}
-		}
-		return tmp;
-	}
 	
 	public static void main()
 	{
 		Client client = new Client();
-		protocol = new Protocol();
+		client.listenServer();
+	}
+
+	/**
+	 * 
+	 */
+	private void listenEventServer()
+	{
+		throw new RuntimeException();
 	}
 }
