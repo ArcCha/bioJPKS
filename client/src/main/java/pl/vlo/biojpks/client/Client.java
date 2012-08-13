@@ -17,7 +17,7 @@ public class Client
 	public Client()
 	{
 		super();
-		connection = new Connection();
+		connection = new Connection();		//przeciez to nie ma konstruktora?!
 		protocol = new Protocol(connection);
 		gui = new ClientGUI();
 	}
@@ -30,9 +30,13 @@ public class Client
 		throw new RuntimeException();
 	}
 
-	public static void main()
+	public static void main(String[] args)
 	{
 		Client client = new Client();
-		client.listenEventServer();
+		while (true)
+		{
+			
+		}
+		//client.listenEventServer();
 	}
 }

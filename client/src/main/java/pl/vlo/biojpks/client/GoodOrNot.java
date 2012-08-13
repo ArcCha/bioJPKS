@@ -1,25 +1,31 @@
 /**
  * 
  */
+
 package pl.vlo.biojpks.client;
 
 /**
  * @author arccha
- *
+ * 
  */
 public class GoodOrNot extends GameObject implements Showable
 {
 
+	private String	result;
+
 	/**
 	 * 
 	 */
-	public GoodOrNot()
+	public GoodOrNot(String result)
 	{
-		// TODO Auto-generated constructor stub
+		this.result = result;
 	}
 
-	/* (non-Javadoc)
-	 * @see pl.vlo.biojpks.client.Showable#showInGame(pl.vlo.biojpks.client.ClientGUI)
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * pl.vlo.biojpks.client.Showable#showInGame(pl.vlo.biojpks.client.ClientGUI
+	 * )
 	 */
 	@Override
 	public void showInGame(ClientGUI gui)
