@@ -25,10 +25,10 @@ public class ClientGUI extends JFrame implements ActionListener
 	 */
 	private BorderLayout	layout;
 	private JPanel			window;
-	private JTextArea		que;	// pytanie
+	private JTextArea		question;	// pytanie
 	private JTextArea		chat;	// chat glowny
 	private JTextArea		input;	// linijka do wprowadzania
-	private JTextArea		stat;	// status
+	private JTextArea		status;	// status
 	private JLabel			img;	// element na obrazek
 
 	/**
@@ -37,35 +37,38 @@ public class ClientGUI extends JFrame implements ActionListener
 	public ClientGUI()
 	{
 		super();
-		layout = new BorderLayout();
+		
 		setPreferredSize(new Dimension(800, 600));
 		
+		layout = new BorderLayout();
 		window = new JPanel(layout);
-		// window.setPreferredSize(new Dimension(800, 600));
 		add(window);
 
-		que = new JTextArea("PYTANIE");
-		// que.setPreferredSize(new Dimension(800, 100));
-		add(que, BorderLayout.NORTH);
+		question = new JTextArea("PYTANIE");
+		add(question, BorderLayout.NORTH);
 
 		chat = new JTextArea("CHAT");
-		// chat.setPreferredSize(new Dimension(800, 400));
 		add(chat, BorderLayout.CENTER);
 
 		input = new JTextArea("INPUT");
-		// input.setPreferredSize(new Dimension(800, 100));
 		add(input, BorderLayout.SOUTH);
 
-		stat = new JTextArea("STATUS");
-		// stat.setPreferredSize(new Dimension(100, 400));
-		add(stat, BorderLayout.EAST);
+		status = new JTextArea("STATUS");
+		add(status, BorderLayout.EAST);
 
 		img = new JLabel("OBRAZEK");
 		add(img, BorderLayout.WEST);
+		
+		status.setText("DUPA");
 
-		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		pack();
 		setVisible(true);
+	}
+	
+	public void showStatus(String stat)
+	{
+		status.setText(stat);
 	}
 
 	/*

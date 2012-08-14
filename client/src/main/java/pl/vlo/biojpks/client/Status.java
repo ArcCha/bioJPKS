@@ -34,7 +34,13 @@ public class Status extends GameObject implements Showable
 	@Override
 	public void showInGame(ClientGUI gui)
 	{
-		throw new RuntimeException();
+		String output = "";
+		for (int i = 0; i < players.length; i++)
+		{
+			output = output + players[i].nick + " " + players[i].points + "\n";
+			System.out.println(output);
+		}
+		gui.showStatus(output);
 	}
 
 }
