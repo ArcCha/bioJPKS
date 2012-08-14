@@ -15,7 +15,6 @@ public class StatusParser extends Parser
 	public StatusParser(Scanner scanner)
 	{
 		super(scanner);
-		// TODO Auto-generated constructor stub
 	}
 
 	/*
@@ -25,8 +24,15 @@ public class StatusParser extends Parser
 	@Override
 	public GameObject parse()
 	{
-		// TODO Auto-generated method stub
-		throw new RuntimeException();
+		int nPlayers;
+		nPlayers = scanner.nextInt();
+		Player[] players = new Player[nPlayers];
+		for (int i = 0; i < nPlayers; i++)
+		{
+			players[i] = new Player(scanner.nextInt(), scanner.next());
+		}
+		Status status = new Status(nPlayers, players);
+		return status;
 	}
 
 }

@@ -13,11 +13,17 @@ public class Player extends GameObject implements Showable
 {
 	String	nick;
 	int		points;
-
+	
 	public Player(String nick)
 	{
 		this.nick = nick;
 		this.points = 0;
+	}
+
+	public Player(int points, String nick)
+	{
+		this.nick = nick;
+		this.points = points;
 	}
 
 	/**
