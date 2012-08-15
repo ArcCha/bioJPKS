@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 package pl.vlo.biojpks.client;
 
 import javax.management.RuntimeErrorException;
@@ -28,8 +29,11 @@ public class Status extends GameObject implements Showable
 		this.players = players;
 	}
 
-	/* (non-Javadoc)
-	 * @see pl.vlo.biojpks.client.Showable#showInGame(pl.vlo.biojpks.client.ClientGUI)
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * pl.vlo.biojpks.client.Showable#showInGame(pl.vlo.biojpks.client.ClientGUI
+	 * )
 	 */
 	@Override
 	public void showInGame(ClientGUI gui)
@@ -37,7 +41,8 @@ public class Status extends GameObject implements Showable
 		String output = "";
 		for (int i = 0; i < players.length; i++)
 		{
-			output = output + players[i].nick + " " + players[i].points + "\n";
+			output = output + players[i].nick;
+			output += players[i].points + "\n";
 			System.out.println(output);
 		}
 		gui.showStatus(output);

@@ -1,18 +1,24 @@
 /** 
  * 
  */
+
 package pl.vlo.biojpks.client;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.table.JTableHeader;
 
 /**
  * @author arccha GUI dla bioJPKS.
@@ -26,10 +32,11 @@ public class ClientGUI extends JFrame implements ActionListener
 	private BorderLayout	layout;
 	private JPanel			window;
 	private JTextArea		question;	// pytanie
-	private JTextArea		chat;	// chat glowny
-	private JTextArea		input;	// linijka do wprowadzania
-	private JTextArea		status;	// status
-	private JLabel			img;	// element na obrazek
+	private JTextArea		chat;		// chat glowny
+	private JTextArea		input;		// linijka do wprowadzania
+										// private JTextArea status; // status
+	private JTable			status;
+	private JLabel			img;		// element na obrazek
 
 	/**
 	 * @throws HeadlessException
@@ -37,9 +44,9 @@ public class ClientGUI extends JFrame implements ActionListener
 	public ClientGUI()
 	{
 		super();
-		
+
 		setPreferredSize(new Dimension(800, 600));
-		
+
 		layout = new BorderLayout();
 		window = new JPanel(layout);
 		add(window);
@@ -53,27 +60,33 @@ public class ClientGUI extends JFrame implements ActionListener
 		input = new JTextArea("INPUT");
 		add(input, BorderLayout.SOUTH);
 
-		status = new JTextArea("STATUS");
-		add(status, BorderLayout.EAST);
-
+		Vector<String> columnNames = new Vector<String>();
+		columnNames.add("Nick");
+		columnNames.add("Points");
+		Vector<Vector<String>> data = new Vector<Vector<String>>();
+		status = new JTable(data, columnNames);
+		status.getColumnModel().getColumn(0).setMaxWidth(200);
+		status.getColumnModel().getColumn(1).setPreferredWidth(20);
+		status.getColumnModel().getColumn(1).setMaxWidth(20);
+		JScrollPane scrollPane = new JScrollPane(status);
+		status.setFillsViewportHeight(true);
+		add(scrollPane, BorderLayout.EAST);
+		
 		img = new JLabel("OBRAZEK");
 		add(img, BorderLayout.WEST);
-		
-		status.setText("DUPA");
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
 		setVisible(true);
 	}
-	
+
 	public void showStatus(String stat)
 	{
-		status.setText(stat);
+		//status.setText(stat);
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see
 	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */

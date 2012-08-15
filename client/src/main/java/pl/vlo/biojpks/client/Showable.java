@@ -9,5 +9,6 @@ package pl.vlo.biojpks.client;
  */
 public interface Showable
 {
+	final int maxNick = 20;
 	public abstract void showInGame(ClientGUI gui);
 }

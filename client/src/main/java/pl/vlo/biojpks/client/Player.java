@@ -12,8 +12,8 @@ package pl.vlo.biojpks.client;
 public class Player extends GameObject implements Showable
 {
 	String	nick;
-	int		points;
-	
+	Integer	points;
+
 	public Player(String nick)
 	{
 		this.nick = nick;
