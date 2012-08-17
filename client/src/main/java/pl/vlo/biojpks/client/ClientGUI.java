@@ -9,10 +9,15 @@ import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -85,8 +90,18 @@ public class ClientGUI extends JFrame implements ActionListener
 		JScrollPane scrollPane = new JScrollPane(status);
 		status.setFillsViewportHeight(true);
 		add(scrollPane, BorderLayout.EAST);
-
-		img = new JLabel("OBRAZEK");
+		
+		BufferedImage myPicture = null;
+		try
+		{
+			myPicture = ImageIO.read(ClientGUI.class.getResource("/images/logo.gif"));
+		}
+		catch (IOException e)
+		{
+			System.out.println("Default image not found.");
+			e.printStackTrace();
+		}
+		img = new JLabel(new ImageIcon(myPicture));
 		add(img, BorderLayout.WEST);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

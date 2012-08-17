@@ -3,6 +3,8 @@
  */
 package pl.vlo.biojpks.client;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Scanner;
 
 /**
@@ -27,7 +29,16 @@ public class ImageParser extends Parser
 	@Override
 	public GameObject parse()
 	{
-		// TODO Auto-generated method stub
+		String urlString = scanner.next();
+		try
+		{
+			URL url = new URL(urlString);
+		}
+		catch (MalformedURLException e)
+		{
+			System.out.println("Incorrect URL.");
+			e.printStackTrace();
+		}
 		throw new RuntimeException();
 	}
 
