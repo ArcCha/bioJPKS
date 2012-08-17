@@ -4,6 +4,8 @@
 
 package pl.vlo.biojpks.client;
 
+import java.util.Vector;
+
 import javax.management.RuntimeErrorException;
 
 /**
@@ -38,14 +40,14 @@ public class Status extends GameObject implements Showable
 	@Override
 	public void showInGame(ClientGUI gui)
 	{
-		String output = "";
+		Vector<Vector<String>> data = new Vector<Vector<String>>();
 		for (int i = 0; i < players.length; i++)
 		{
-			output = output + players[i].nick;
-			output += players[i].points + "\n";
-			System.out.println(output);
+			data.add(new Vector<String>());			//ten kawałek bolał...
+			data.get(i).add(players[i].nick);
+			data.get(i).add(players[i].points.toString());
+			System.out.println(i);
 		}
-		gui.showStatus(output);
+		gui.showStatus(data);
 	}
-
 }
