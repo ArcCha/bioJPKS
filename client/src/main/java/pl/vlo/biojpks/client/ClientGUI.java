@@ -7,9 +7,10 @@ package pl.vlo.biojpks.client;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
-import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -18,11 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  * @author arccha GUI dla bioJPKS.
@@ -35,16 +36,18 @@ public class ClientGUI extends JFrame implements ActionListener
 	 */
 	private BorderLayout			layout;
 	private JPanel					window;
-	private JTextArea				question;	// pytanie
-	private JTextArea				chat;		// chat glowny
-	private JTextArea				input;		// linijka do wprowadzania
-												// private JTextArea status; //
-												// status
+	private JTextArea				question;		// pytanie
+	private JTextArea				chat;			// chat glowny
+	private JTextArea				input;			// linijka do wprowadzania
+													// private JTextArea status;
+													// //
+													// status
 	private JTable					status;
-	private JLabel					img;		// element na obrazek
+	private JLabel					img;			// element na obrazek
 	private Vector<Vector<String>>	data;
 	private DefaultTableModel		model;
-	private Vector<String>	columnNames;
+	private Vector<String>			columnNames;
+	private TableRowSorter<TableModel>	sorter;
 
 	/**
 	 * @throws HeadlessException
@@ -74,6 +77,8 @@ public class ClientGUI extends JFrame implements ActionListener
 		data = new Vector<Vector<String>>();
 		model = new DefaultTableModel(data, columnNames);
 		status = new JTable(model);
+		sorter = new TableRowSorter<TableModel>(status.getModel());
+		status.setRowSorter(sorter);
 		// status.getColumnModel().getColumn(0).setMaxWidth(200);
 		// status.getColumnModel().getColumn(1).setPreferredWidth(20);
 		// status.getColumnModel().getColumn(1).setMaxWidth(20);
@@ -92,8 +97,19 @@ public class ClientGUI extends JFrame implements ActionListener
 	public void showStatus(Vector<Vector<String>> data)
 	{
 		this.data = data;
-		model.setDataVector(data, columnNames);
-		//model.newDataAvailable(new TableModelEvent(model));
+		model.setDataVector(data, columnNames); // ustawiam na pale nowy vector
+												// z danymi, a jak widac nizej
+												// chcialem rzucic eventem, ze
+												// JTable powinien sie
+												// odswiezyc. wiem, ze wtedy
+												// powinienem dodac listenera do
+												// modelu, tak tez probowalem,
+												// ale co ja mam wtedy wklepac w
+												// samego listenera?
+		List<RowSorter.SortKey> sortKeys = new ArrayList<RowSorter.SortKey>();
+		sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
+		sorter.setSortKeys(sortKeys);
+		// model.newDataAvailable(new TableModelEvent(model));
 	}
 
 	/*
@@ -106,5 +122,4 @@ public class ClientGUI extends JFrame implements ActionListener
 		// TODO Auto-generated method stub
 
 	}
-
 }
