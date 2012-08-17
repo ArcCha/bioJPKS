@@ -31,8 +31,7 @@ public class StatusParser extends Parser
 		{
 			players[i] = new Player(scanner.nextInt(), scanner.next());
 		}
-		Status status = new Status(nPlayers, players);
-		return status;
+		return new Status(nPlayers, players);
 	}
 
 }

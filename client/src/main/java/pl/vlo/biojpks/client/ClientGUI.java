@@ -5,18 +5,14 @@
 package pl.vlo.biojpks.client;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,19 +35,21 @@ public class ClientGUI extends JFrame implements ActionListener
 	/**
 	 * 
 	 */
-	private BorderLayout			layout;
-	private JPanel					window;
-	private JTextArea				question;		// pytanie
-	private JTextArea				chat;			// chat glowny
-	private JTextArea				input;			// linijka do wprowadzania
-													// private JTextArea status;
-													// //
-													// status
-	private JTable					status;
-	private JLabel					img;			// element na obrazek
-	private Vector<Vector<String>>	data;
-	private DefaultTableModel		model;
-	private Vector<String>			columnNames;
+	private BorderLayout				layout;
+	private JPanel						window;
+	private JTextArea					question;		// pytanie
+	private JTextArea					chat;			// chat glowny
+	private JTextArea					input;			// linijka do
+														// wprowadzania
+														// private JTextArea
+														// status;
+														// //
+														// status
+	private JTable						status;
+	private JLabel						img;			// element na obrazek
+	private Vector<Vector<String>>		data;
+	private DefaultTableModel			model;
+	private Vector<String>				columnNames;
 	private TableRowSorter<TableModel>	sorter;
 
 	/**
@@ -61,7 +59,7 @@ public class ClientGUI extends JFrame implements ActionListener
 	{
 		super();
 
-		setPreferredSize(new Dimension(800, 600));
+		// setPreferredSize(new Dimension(800, 600));
 
 		layout = new BorderLayout();
 		window = new JPanel(layout);
@@ -90,18 +88,19 @@ public class ClientGUI extends JFrame implements ActionListener
 		JScrollPane scrollPane = new JScrollPane(status);
 		status.setFillsViewportHeight(true);
 		add(scrollPane, BorderLayout.EAST);
-		
-		BufferedImage myPicture = null;
-		try
-		{
-			myPicture = ImageIO.read(ClientGUI.class.getResource("/images/logo.gif"));
-		}
-		catch (IOException e)
-		{
-			System.out.println("Default image not found.");
-			e.printStackTrace();
-		}
-		img = new JLabel(new ImageIcon(myPicture));
+
+		// BufferedImage myPicture = null;
+		// try
+		// {
+		// myPicture =
+		// ImageIO.read(ClientGUI.class.getResource("/images/logo.gif"));
+		// }
+		// catch (IOException e)
+		// {
+		// System.out.println("Default image not found.");
+		// e.printStackTrace();
+		// }
+		img = new JLabel(new ImageIcon(ClientGUI.class.getResource("/images/logo.gif")));
 		add(img, BorderLayout.WEST);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -125,6 +124,12 @@ public class ClientGUI extends JFrame implements ActionListener
 		sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
 		sorter.setSortKeys(sortKeys);
 		// model.newDataAvailable(new TableModelEvent(model));
+	}
+
+	public void showImage(Icon icon)
+	{
+		img.setIcon(icon); // czy jakbym to wsadził do klasy Image to to
+									// by było brzydkie bardzo? -> gui.img.setIcon...
 	}
 
 	/*

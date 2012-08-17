@@ -41,6 +41,9 @@ public class Client
 												// pierdolone algorytmy.
 		Status stat = new Status(3, players);
 		stat.showInGame(test);
+		
+		Image imgtest = new Image(Client.class.getResource("/images/logo1.gif"));
+		imgtest.showInGame(test);
 		while (true) // nie mam lepszego pomyslu jak to zatrzymac zeby mi nie
 						// znikalo od razu.
 		{
