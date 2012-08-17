@@ -58,7 +58,8 @@ public class ClientGUI extends JFrame implements ActionListener
 	public ClientGUI()
 	{
 		super();
-
+		setName("bioJPKS");
+		setTitle("bioJPKS");
 		// setPreferredSize(new Dimension(800, 600));
 
 		layout = new BorderLayout();
