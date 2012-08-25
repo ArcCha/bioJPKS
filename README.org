@@ -2,21 +2,23 @@
   
 ** Protokół
   
-   Protokół na którym działa bioJPKS jest bardzo prosty
+   Protokół na którym działa bioJPKS jest bardzo prosty.
+   Każda informacja jest przesyłana w osobnej lini.
 
 *** Informacja o statusie odpowiedzi
     
-    Serwer odpowiada o odpowiedz dopiero w momencie udzielenia poprawnej odpowiedzi na pytanie
-    liniją =OK= jeżeli padła poprawna odpowiedz od gracza lub =BAD= w przypadku gdy nie padła poprawna odpowiedz
+    Serwer potwierdza przyjęcie odpowiedzi tagiem =ANSWER=. Gdy odpowiedź jest prawidłowa jest przesyłąna linia =OK=,
+    jeżeli padła poprawna odpowiedz od gracza lub =BAD= w przypadku gdy odpowiedź jest zła.
 
 *** Zadawanie pytań
 
     Serwer informuje o zadanie pytania linijką =QUESTION= po której następuje w nowej lini pytanie, a w następnej linii odpowiedź.
+    Do każdego obrazka jest dodawane zdjęcie (Patrz Wysyłanie Obrazków)
 
 *** Wysyłanie obrazków
  
     Serwer może przesłać klientowi obraz rozpoczynając przekaz od linijki =IMAGE= po której w nowej lini
-    powinien znajdować się URL do obrazka.
+    powinien znajdować się URL do obrazka. Jeżeli obrazek nie jest przesyłany po tagu =IMAGE= pojawia sie tag =DEFAULT=
      
 *** Informacje o zawdonikach
 
@@ -26,12 +28,6 @@
     =k nick= gdzie *k* jest liczbą zdobyta przez gracza przestawiającego się jako *nick*. *nick* jest zakończony znakiem nowej lini.
     System nie pozwala na używanie nicków zawierających nową linię.
     
-** Uwagi
-
-	Nie ma tu chyba lepszych możliwości dyskusji, więc modyfikuję readme.
-	Uważam, że warto by wprowadzić modyfikacje do protokołu.
-	1) Tokeny powinny być w osobnych liniach.
-	2) Token =IMAGE= powinien być zawsze przesyłany, a w wypadku, gdy nie chcemy żadnego innego obrazka, w następnej linii powinien znajdować się tekst =DEFAULT=.
 
 	Po długiej przerwie kończymy projekt:)
 	Uważam, że dobrze by było wsadzić nad =OK= i =BAD= jakąś 
