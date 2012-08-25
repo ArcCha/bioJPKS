@@ -11,6 +11,11 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Klasa impementująca bazę pytań jako plik
+ * @author bambucha
+ *
+ */
 public class FileQuestionRepository implements QuestionReposiotry
 {
     private Logger                 log = Logger.getLogger(FileQuestionRepository.class.getName());

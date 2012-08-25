@@ -42,6 +42,7 @@ public class FileQuestionRepositoryTest
         Question result = repo.drawOneQuestion();
         assertThat(result.getQuestion()).isEqualTo(question);
         assertThat(result.getAnsware()).isEqualTo(answare);
+        writer.close();
     }
 
 }

@@ -1,5 +1,10 @@
 package pl.vlo.biojpks.server;
 
+/**
+ * Interfejs dla bazy pytań. Pozwala na równoległą implenentację różnych typów.
+ * @author bambucha
+ *
+ */
 public interface QuestionReposiotry
 {
     /**
