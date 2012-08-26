@@ -23,7 +23,7 @@ public class QuestionParser extends Parser
 	@Override
 	public Question parse()
 	{
-		return new Question(scanner.nextLine(), scanner.nextLine());
+		return new Question(scanner.nextLine());
 	}
 
 }

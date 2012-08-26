@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 package pl.vlo.biojpks.client;
 
 /**
@@ -10,7 +11,6 @@ package pl.vlo.biojpks.client;
 public class Question extends GameObject implements Showable
 {
 	String	question;
-	String	answer;
 
 	/**
 	 * @return the question
@@ -30,34 +30,19 @@ public class Question extends GameObject implements Showable
 	}
 
 	/**
-	 * @return the answer
-	 */
-	public String getAnswer()
-	{
-		return answer;
-	}
-
-	/**
-	 * @param answer
-	 *            the answer to set
-	 */
-	public void setAnswer(String answer)
-	{
-		this.answer = answer;
-	}
-
-	/**
 	 * @param question
 	 * @param answer
 	 */
-	public Question(String question, String answer)
+	public Question(String question)
 	{
 		this.question = question;
-		this.answer = answer;
 	}
 
-	/* (non-Javadoc)
-	 * @see pl.vlo.biojpks.client.Showable#showInGame(pl.vlo.biojpks.client.ClientGUI)
+	/*
+	 * (non-Javadoc)
+	 * @see
+	 * pl.vlo.biojpks.client.Showable#showInGame(pl.vlo.biojpks.client.ClientGUI
+	 * )
 	 */
 	@Override
 	public void showInGame(ClientGUI gui)

@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
@@ -37,7 +38,7 @@ public class ClientGUI extends JFrame implements ActionListener
 	 */
 	private BorderLayout				layout;
 	private JPanel						window;
-	private JTextArea					question;		// pytanie
+	private JTextPane					question;		// pytanie
 	private JTextArea					chat;			// chat glowny
 	private JTextArea					input;			// linijka do
 														// wprowadzania
@@ -66,7 +67,8 @@ public class ClientGUI extends JFrame implements ActionListener
 		window = new JPanel(layout);
 		add(window);
 
-		question = new JTextArea("PYTANIE");
+		question = new JTextPane();
+		question.setEditable(false);
 		add(question, BorderLayout.NORTH);
 
 		chat = new JTextArea("CHAT");

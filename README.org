@@ -11,7 +11,9 @@
 
 *** Zadawanie pytań
 
-    Serwer informuje o zadanie pytania linijką =QUESTION= po której następuje w nowej lini pytanie, a w następnej linii odpowiedź.
+    Serwer informuje o zadanie pytania linijką =QUESTION= po której następuje w nowej 
+lini pytanie. EDIT: A po grzyba wysyłać odpowiedź. To chyba zresztą był mój nietrafiony 
+pomysł. ~ArcCha
 
 *** Wysyłanie obrazków
  
