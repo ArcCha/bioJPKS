@@ -1,15 +1,15 @@
 
 package pl.vlo.biojpks.client;
 
-import java.io.IOException;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Client
 {
 	private Connection	connection;
 	private ClientGUI	gui;
 	private Protocol	protocol;
+	private final static Logger logger = LoggerFactory.getLogger(Client.class);
 
 	/**
 	 * 
@@ -32,6 +32,7 @@ public class Client
 
 	public static void main(String[] args)
 	{
+		logger.info("Starting sample");
 		// Client client = new Client();
 		ClientGUI test = new ClientGUI();
 		Player[] players = new Player[3];

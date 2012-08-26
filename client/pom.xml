@@ -5,11 +5,8 @@
 	<artifactId>client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<build>
-		<!-- <resources>
-			<resource>
-				<directory>src/main/java/pl/vlo/biojpks/client</directory>
-			</resource>
-		</resources> -->
+		<!-- <resources> <resource> <directory>src/main/java/pl/vlo/biojpks/client</directory> 
+			</resource> </resources> -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -36,6 +33,11 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.6</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
