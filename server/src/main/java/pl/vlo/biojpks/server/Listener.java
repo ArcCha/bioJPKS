@@ -5,15 +5,22 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Logger;
 
+/**
+ * Klasa oczekująca na podłączających się graczy
+ * @author bambucha
+ *
+ */
 public class Listener extends Thread
 {
     Logger log = Logger.getLogger(Listener.class.getName());
     
     final private ServerSocket server;
+    final private PlayerThreadPool pool;
     
-    public Listener(int port) throws IOException
+    public Listener(int port,PlayerThreadPool pool) throws IOException
     {
         server = new ServerSocket(port);
+        this.pool = pool;
         setDaemon(true);
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable()
         {
@@ -36,20 +43,18 @@ public class Listener extends Thread
     @Override
     public void run()
     {
-        Socket socket;
+        Socket socket = null;
         while(true)
         {
             try
             {
                 socket = server.accept();
+                pool.add(new PlayerThread(socket, null));
             }
             catch(IOException e)
             {
-                log.log(java.util.logging.Level.SEVERE,"Wyjątek",e);
+                log.log(java.util.logging.Level.SEVERE,"Close when listing",e);
             }
         }
     }
-    
-    
-
 }

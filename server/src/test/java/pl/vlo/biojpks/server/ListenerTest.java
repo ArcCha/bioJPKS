@@ -39,6 +39,7 @@ public class ListenerTest
     {
         Socket socket = new Socket(host, port);
         assertThat(socket.isConnected()).isTrue();
+        socket.close();
     }
 
 }

@@ -2,6 +2,11 @@ package pl.vlo.biojpks.server;
 
 import java.io.Serializable;
 
+/**
+ * Klasa encja dla pytań
+ * @author bambucha
+ *
+ */
 public class Question implements Serializable
 {
     /**

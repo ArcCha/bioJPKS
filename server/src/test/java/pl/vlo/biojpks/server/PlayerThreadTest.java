@@ -14,7 +14,7 @@ public class PlayerThreadTest
     @Test
     public void testConstructor() throws IOException
     {
-        new PlayerThread(genSocketMock(""));
+        
     }
     
     public void testName() throws Exception
