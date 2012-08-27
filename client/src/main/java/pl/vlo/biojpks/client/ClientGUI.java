@@ -56,6 +56,8 @@ public class ClientGUI extends JFrame implements ActionListener
 	private final static Logger			logger	= LoggerFactory.getLogger(ClientGUI.class);
 	private StyledDocument				quePane;
 	private StyledDocument				chatPane;
+	private String						nick;
+	private String						messText;
 
 	/**
 	 * @throws HeadlessException
@@ -200,6 +202,11 @@ public class ClientGUI extends JFrame implements ActionListener
 							// by było brzydkie bardzo? -> gui.img.setIcon...
 	}
 
+	private Message sendMessage()
+	{
+		return new Message(nick, messText);
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * @see
@@ -207,7 +214,7 @@ public class ClientGUI extends JFrame implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
-		String text = input.getText();
+		messText = input.getText();
 		input.setText("");
 	}
 }

@@ -111,4 +111,10 @@ public class Protocol
 		logger.error("Parsing incoming command failed");
 		throw new RuntimeErrorException(null);
 	}
+	
+	public void sendMessageToServer(Message mess)
+	{
+		printer.print(mess.nick);
+		printer.print(mess.text);
+	}
 }
