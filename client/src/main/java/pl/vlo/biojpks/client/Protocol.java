@@ -22,7 +22,7 @@ public class Protocol
 {
 	enum Command
 	{
-		STATUS, QUESTION, OK, BAD, IMAGE, NULL;
+		STATUS, QUESTION, OK, BAD, IMAGE, MESSAGE, NULL;
 	}
 
 	private Socket		socket;
@@ -74,8 +74,11 @@ public class Protocol
 				return new GoodOrNotParser(scanner);
 			case STATUS:
 				return new StatusParser(scanner);
+			case MESSAGE:
+				return new MessageParser(scanner);
 		}
-		throw new RuntimeErrorException(null, "Could not determine proper parser");
+		logger.error("Could not determine proper parser");
+		throw new RuntimeErrorException(null);
 	}
 
 	/**
@@ -100,9 +103,12 @@ public class Protocol
 						return Command.OK;
 					case "STATUS":
 						return Command.STATUS;
+					case "MESSAGE":
+						return Command.MESSAGE;
 				}
 			}
 		}
-		throw new RuntimeErrorException(null, "Parsing incoming command failed");
+		logger.error("Parsing incoming command failed");
+		throw new RuntimeErrorException(null);
 	}
 }
