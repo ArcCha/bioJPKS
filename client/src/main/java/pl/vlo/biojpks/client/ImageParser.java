@@ -8,6 +8,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author arccha
  * 
@@ -15,6 +18,7 @@ import java.util.Scanner;
 public class ImageParser extends Parser
 {
 
+	private final static Logger logger = LoggerFactory.getLogger(ImageParser.class);
 	/**
 	 * @param scanner
 	 */
@@ -46,6 +50,7 @@ public class ImageParser extends Parser
 			}
 			catch (MalformedURLException e)
 			{
+				logger.warn("Incorrect URL:" + url );
 				System.out.println("Incorrect URL.");
 				e.printStackTrace();
 			}

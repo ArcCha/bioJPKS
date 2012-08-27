@@ -11,6 +11,9 @@ import java.util.Scanner;
 
 import javax.management.RuntimeErrorException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author arccha Klasa ogarniająca protokół.
  * 
@@ -25,6 +28,7 @@ public class Protocol
 	private Socket		socket;
 	private Scanner		scanner;
 	private PrintWriter	printer;
+	private final static Logger logger = LoggerFactory.getLogger(Protocol.class);
 
 	public Protocol(Connection connection)
 	{
@@ -36,7 +40,7 @@ public class Protocol
 		}
 		catch (IOException e)
 		{
-			System.err.println("IO is missing.");
+			logger.error("IO is missing.");
 			e.printStackTrace();
 		}
 	}
