@@ -19,7 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
@@ -45,20 +45,10 @@ public class ClientGUI extends JFrame implements ActionListener
 	private BorderLayout				layout;
 	private JPanel						window;
 	private JTextPane					question;											// pytanie
-	private JTextPane					chat;												// chat
-																							// glowny
-	private JTextArea					input;												// linijka
-																							// do
-																							// wprowadzania
-																							// private
-																							// JTextArea
-																							// status;
-																							// //
-																							// status
+	private JTextPane					chat;												// chat glowny
+	private JTextField					input;												// input
 	private JTable						status;
-	private JLabel						img;												// element
-																							// na
-																							// obrazek
+	private JLabel						img;												// element na obrazek
 	private Vector<Vector<String>>		data;
 	private DefaultTableModel			model;
 	private Vector<String>				columnNames;
@@ -111,7 +101,8 @@ public class ClientGUI extends JFrame implements ActionListener
 		chat.setEditable(false);
 		add(chat, BorderLayout.CENTER);
 
-		input = new JTextArea("INPUT");
+		input = new JTextField();
+		input.addActionListener(this);
 		add(input, BorderLayout.SOUTH);
 
 		columnNames = new Vector<String>();
@@ -147,8 +138,9 @@ public class ClientGUI extends JFrame implements ActionListener
 		pack();
 		setVisible(true);
 	}
-	
-	public void showMessage(String nick, String text)	//troche mi sie nie podoba ta metoda
+
+	public void showMessage(String nick, String text) // troche mi sie nie
+														// podoba ta metoda
 	{
 		try
 		{
@@ -215,7 +207,7 @@ public class ClientGUI extends JFrame implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
-		// TODO Auto-generated method stub
-
+		String text = input.getText();
+		input.setText("");
 	}
 }

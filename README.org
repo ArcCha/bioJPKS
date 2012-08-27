@@ -5,22 +5,24 @@
    Protokół na którym działa bioJPKS jest bardzo prosty.
    Każda informacja jest przesyłana w osobnej lini.
 
-*** Informacja o statusie odpowiedzi
+*** Strona serwera
+
+**** Informacja o statusie odpowiedzi
     
     Serwer potwierdza przyjęcie odpowiedzi tagiem =ANSWER=. Gdy odpowiedź jest prawidłowa jest przesyłąna linia =OK=,
     jeżeli padła poprawna odpowiedz od gracza lub =BAD= w przypadku gdy odpowiedź jest zła.
 
-*** Zadawanie pytań
+**** Zadawanie pytań
 
     Serwer informuje o zadanie pytania linijką =QUESTION= po której następuje w nowej lini pytanie, a w następnej linii odpowiedź.
     Do każdego obrazka jest dodawane zdjęcie (Patrz Wysyłanie Obrazków)
 
-*** Wysyłanie obrazków
+**** Wysyłanie obrazków
  
     Serwer może przesłać klientowi obraz rozpoczynając przekaz od linijki =IMAGE= po której w nowej lini
     powinien znajdować się URL do obrazka. Jeżeli obrazek nie jest przesyłany po tagu =IMAGE= pojawia sie tag =DEFAULT=
      
-*** Informacje o zawdonikach
+**** Informacje o zawdonikach
 
     Serwer informuje o aktualnym stanie gry poprzez wysłanie =STATUS= do klientów.
     Zaraz po odebraniu tagu pierwszej nowej lini znajduje się zliczba *n* informująca o ilości zawodników aktualnie 
@@ -28,7 +30,7 @@
     =k nick= gdzie *k* jest liczbą zdobyta przez gracza przestawiającego się jako *nick*. *nick* jest zakończony znakiem nowej lini.
     System nie pozwala na używanie nicków zawierających nową linię.
 
-*** Zarządanie wiadomościami
+**** Zarządanie wiadomościami
 
 	Gracze odpowiadając na pytania czy po prostu rozmawiając używają 
 jednolinijkowych wiadomości. Wiadomość wysłana przez danego gracza, 
@@ -36,3 +38,10 @@ powinna trafić na serwer, tam zostać przetworzona, a końcowo rozesłana
 do wszystkich aktywnych klientów(włącznie z nadawcom). Serwer realizuje 
 to wysyłając tag =MESSAGE=, po nim znak nowej linii, w następnej linijce 
 nick gracza, który był nadawcom, a w kolejnej treść wiadomości.
+
+*** Strona klienta
+
+**** Nadawanie wiadomości
+
+	Klient nadaje wiadomość do serwera wysyłając tag =MESSAGE=, a w 
+nowej linii treść wiadomości, którą kończy znak newline.
