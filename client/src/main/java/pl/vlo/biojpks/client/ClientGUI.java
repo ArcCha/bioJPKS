@@ -96,7 +96,7 @@ public class ClientGUI extends JFrame implements ActionListener
 		question.setEditable(false);
 		add(question, BorderLayout.NORTH);
 
-		String chatInit = new String("Witaj w aplikacji bioJPKS!");
+		String chatInit = new String("Witaj w aplikacji bioJPKS!" + "\n");
 		chatPane = new DefaultStyledDocument();
 		try
 		{
@@ -146,6 +146,19 @@ public class ClientGUI extends JFrame implements ActionListener
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
 		setVisible(true);
+	}
+	
+	public void showMessage(String nick, String text)	//troche mi sie nie podoba ta metoda
+	{
+		try
+		{
+			chatPane.insertString(chatPane.getLength(), nick + ": " + text + "\n", null);
+		}
+		catch (BadLocationException e)
+		{
+			logger.warn("Cannot show message");
+			e.printStackTrace();
+		}
 	}
 
 	public void showQuestion(String que)
