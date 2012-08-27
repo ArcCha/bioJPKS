@@ -28,4 +28,10 @@ public class Message extends GameObject implements Showable
 		gui.showMessage(nick, text);
 	}
 
+	@Override
+	public String toString()
+	{
+		return "Message [nick=" + nick + ", text=" + text + "]";
+	}
+
 }

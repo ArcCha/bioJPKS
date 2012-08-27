@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author arccha GUI dla bioJPKS.
  */
-public class ClientGUI extends JFrame implements ActionListener
+public class ClientGUI extends JFrame
 {
 
 	/**
@@ -57,14 +57,15 @@ public class ClientGUI extends JFrame implements ActionListener
 	private StyledDocument				quePane;
 	private StyledDocument				chatPane;
 	private String						nick;
-	private String						messText;
 
+	private Client client;
 	/**
 	 * @throws HeadlessException
 	 */
-	public ClientGUI()
+	public ClientGUI(Client client)
 	{
 		super();
+		this.client = client;
 		setName("bioJPKS");
 		setTitle("bioJPKS");
 		// setPreferredSize(new Dimension(800, 600));
@@ -104,7 +105,7 @@ public class ClientGUI extends JFrame implements ActionListener
 		add(chat, BorderLayout.CENTER);
 
 		input = new JTextField();
-		input.addActionListener(this);
+		input.addActionListener(client);
 		add(input, BorderLayout.SOUTH);
 
 		columnNames = new Vector<String>();
@@ -202,19 +203,11 @@ public class ClientGUI extends JFrame implements ActionListener
 							// by było brzydkie bardzo? -> gui.img.setIcon...
 	}
 
-	private Message sendMessage()
+	public Message getMessage()
 	{
+		String messText = input.getText();
+		input.setText("");
 		return new Message(nick, messText);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-	 */
-	public void actionPerformed(ActionEvent e)
-	{
-		messText = input.getText();
-		input.setText("");
-	}
 }
