@@ -26,6 +26,12 @@ import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.StyledDocument;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author arccha GUI dla bioJPKS.
@@ -52,6 +58,8 @@ public class ClientGUI extends JFrame implements ActionListener
 	private DefaultTableModel			model;
 	private Vector<String>				columnNames;
 	private TableRowSorter<TableModel>	sorter;
+	private final static Logger logger = LoggerFactory.getLogger(ClientGUI.class);
+	private StyledDocument	doc;
 
 	/**
 	 * @throws HeadlessException
@@ -67,7 +75,18 @@ public class ClientGUI extends JFrame implements ActionListener
 		window = new JPanel(layout);
 		add(window);
 
-		question = new JTextPane();
+		String quetest = new String("Pytanie " + "dwustringowe");
+		doc = new DefaultStyledDocument();
+		try
+		{
+			doc.insertString(0, quetest, null);
+		}
+		catch (BadLocationException e)
+		{
+			logger.warn("Sample question have gone... who cares where?");
+			e.printStackTrace();
+		}
+		question = new JTextPane(doc);
 		question.setEditable(false);
 		add(question, BorderLayout.NORTH);
 
@@ -110,6 +129,28 @@ public class ClientGUI extends JFrame implements ActionListener
 		pack();
 		setVisible(true);
 	}
+	
+	public void showQuestion(String que)
+	{
+		try
+		{
+			doc.remove(0, doc.getLength());
+		}
+		catch (BadLocationException e1)
+		{
+			logger.warn("Cannot clear question pane.");
+			e1.printStackTrace();
+		}
+		try
+		{
+			doc.insertString(0, que, null);
+		}
+		catch (BadLocationException e)
+		{
+			logger.warn("Cannot load question to GUI"); //to sie w ogole moze zdarzyc?
+			e.printStackTrace();
+		}
+	}
 
 	public void showStatus(Vector<Vector<String>> data)
 	{
@@ -132,7 +173,7 @@ public class ClientGUI extends JFrame implements ActionListener
 	public void showImage(Icon icon)
 	{
 		img.setIcon(icon); // czy jakbym to wsadził do klasy Image to to
-									// by było brzydkie bardzo? -> gui.img.setIcon...
+							// by było brzydkie bardzo? -> gui.img.setIcon...
 	}
 
 	/*

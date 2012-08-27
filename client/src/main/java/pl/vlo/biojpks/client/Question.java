@@ -31,7 +31,6 @@ public class Question extends GameObject implements Showable
 
 	/**
 	 * @param question
-	 * @param answer
 	 */
 	public Question(String question)
 	{
@@ -47,7 +46,7 @@ public class Question extends GameObject implements Showable
 	@Override
 	public void showInGame(ClientGUI gui)
 	{
-		throw new RuntimeException();
+		gui.showQuestion(question);
 	}
 
 }

@@ -46,7 +46,6 @@ public class Status extends GameObject implements Showable
 			data.add(new Vector<String>());			//ten kawałek bolał...
 			data.get(i).add(players[i].nick);
 			data.get(i).add(players[i].points.toString());
-			System.out.println(i);
 		}
 		gui.showStatus(data);
 	}

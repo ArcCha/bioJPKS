@@ -45,6 +45,10 @@ public class Client
 		
 		Image imgtest = new Image(Client.class.getResource("/images/logo1.gif"));
 		imgtest.showInGame(test);
+		
+		Question queTest = new Question("To be or not to be?");
+		queTest.showInGame(test);
+		
 		while (true) // nie mam lepszego pomyslu jak to zatrzymac zeby mi nie
 						// znikalo od razu.
 		{
