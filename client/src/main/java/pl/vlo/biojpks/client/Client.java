@@ -49,6 +49,9 @@ public class Client
 		Question queTest = new Question("To be or not to be?");
 		queTest.showInGame(test);
 		
+		Message mesTest = new Message("ja", "Test message");
+		mesTest.showInGame(test);
+		
 		while (true) // nie mam lepszego pomyslu jak to zatrzymac zeby mi nie
 						// znikalo od razu.
 		{

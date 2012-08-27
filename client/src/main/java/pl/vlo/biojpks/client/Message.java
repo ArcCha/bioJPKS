@@ -25,8 +25,7 @@ public class Message extends GameObject implements Showable
 	@Override
 	public void showInGame(ClientGUI gui)
 	{
-		// TODO Auto-generated method stub
-		throw new RuntimeException();
+		gui.showMessage(nick, text);
 	}
 
 }
