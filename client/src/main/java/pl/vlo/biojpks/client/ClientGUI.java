@@ -44,22 +44,28 @@ public class ClientGUI extends JFrame implements ActionListener
 	 */
 	private BorderLayout				layout;
 	private JPanel						window;
-	private JTextPane					question;		// pytanie
-	private JTextArea					chat;			// chat glowny
-	private JTextArea					input;			// linijka do
-														// wprowadzania
-														// private JTextArea
-														// status;
-														// //
-														// status
+	private JTextPane					question;											// pytanie
+	private JTextPane					chat;												// chat
+																							// glowny
+	private JTextArea					input;												// linijka
+																							// do
+																							// wprowadzania
+																							// private
+																							// JTextArea
+																							// status;
+																							// //
+																							// status
 	private JTable						status;
-	private JLabel						img;			// element na obrazek
+	private JLabel						img;												// element
+																							// na
+																							// obrazek
 	private Vector<Vector<String>>		data;
 	private DefaultTableModel			model;
 	private Vector<String>				columnNames;
 	private TableRowSorter<TableModel>	sorter;
-	private final static Logger logger = LoggerFactory.getLogger(ClientGUI.class);
-	private StyledDocument	doc;
+	private final static Logger			logger	= LoggerFactory.getLogger(ClientGUI.class);
+	private StyledDocument				quePane;
+	private StyledDocument				chatPane;
 
 	/**
 	 * @throws HeadlessException
@@ -76,21 +82,33 @@ public class ClientGUI extends JFrame implements ActionListener
 		add(window);
 
 		String quetest = new String("Pytanie " + "dwustringowe");
-		doc = new DefaultStyledDocument();
+		quePane = new DefaultStyledDocument();
 		try
 		{
-			doc.insertString(0, quetest, null);
+			quePane.insertString(0, quetest, null);
 		}
 		catch (BadLocationException e)
 		{
 			logger.warn("Sample question have gone... who cares where?");
 			e.printStackTrace();
 		}
-		question = new JTextPane(doc);
+		question = new JTextPane(quePane);
 		question.setEditable(false);
 		add(question, BorderLayout.NORTH);
 
-		chat = new JTextArea("CHAT");
+		String chatInit = new String("Witaj w aplikacji bioJPKS!");
+		chatPane = new DefaultStyledDocument();
+		try
+		{
+			chatPane.insertString(0, chatInit, null);
+		}
+		catch (BadLocationException e)
+		{
+			logger.warn("Cannot initialize chatPane");
+			e.printStackTrace();
+		}
+		chat = new JTextPane(chatPane);
+		chat.setEditable(false);
 		add(chat, BorderLayout.CENTER);
 
 		input = new JTextArea("INPUT");
@@ -129,12 +147,12 @@ public class ClientGUI extends JFrame implements ActionListener
 		pack();
 		setVisible(true);
 	}
-	
+
 	public void showQuestion(String que)
 	{
 		try
 		{
-			doc.remove(0, doc.getLength());
+			quePane.remove(0, quePane.getLength());
 		}
 		catch (BadLocationException e1)
 		{
@@ -143,11 +161,12 @@ public class ClientGUI extends JFrame implements ActionListener
 		}
 		try
 		{
-			doc.insertString(0, que, null);
+			quePane.insertString(0, que, null);
 		}
 		catch (BadLocationException e)
 		{
-			logger.warn("Cannot load question to GUI"); //to sie w ogole moze zdarzyc?
+			logger.warn("Cannot load question to GUI"); // to sie w ogole moze
+														// zdarzyc?
 			e.printStackTrace();
 		}
 	}

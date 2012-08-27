@@ -51,7 +51,6 @@ public class ImageParser extends Parser
 			catch (MalformedURLException e)
 			{
 				logger.warn("Incorrect URL:" + url );
-				System.out.println("Incorrect URL.");
 				e.printStackTrace();
 			}
 		}
