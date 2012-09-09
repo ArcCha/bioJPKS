@@ -22,7 +22,7 @@ public class Protocol
 {
 	enum Command
 	{
-		STATUS, QUESTION, OK, BAD, IMAGE, MESSAGE, NULL;
+		STATUS, QUESTION, ANSWER, IMAGE, MESSAGE, NULL;
 	}
 
 	private Socket		socket;
@@ -68,9 +68,7 @@ public class Protocol
 				return new QuestionParser(scanner);
 			case IMAGE:
 				return new ImageParser(scanner);
-			case BAD:
-				return new GoodOrNotParser(scanner);
-			case OK:
+			case ANSWER:
 				return new GoodOrNotParser(scanner);
 			case STATUS:
 				return new StatusParser(scanner);
@@ -97,10 +95,8 @@ public class Protocol
 						return Command.QUESTION;
 					case "IMAGE":
 						return Command.IMAGE;
-					case "BAD":
-						return Command.BAD;
-					case "OK":
-						return Command.OK;
+					case "ANSWER":
+						return Command.ANSWER;
 					case "STATUS":
 						return Command.STATUS;
 					case "MESSAGE":
