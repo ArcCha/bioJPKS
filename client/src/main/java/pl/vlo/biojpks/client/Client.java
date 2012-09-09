@@ -50,15 +50,17 @@ public class Client implements ActionListener
 		Question queTest = new Question("To be or not to be?");
 		queTest.showInGame(gui);
 
-		Message mesTest = new Message("ja", "Test message");
+		Message mesTest = new Message(gui.getNick(), "Test message");
 		mesTest.showInGame(gui);
 
+		logger.info("Current nick is: " + gui.getNick());
+		
 		while (true) // nie mam lepszego pomyslu jak to zatrzymac zeby mi nie
 						// znikalo od razu.
 		{
 
 		}
-	}
+	} 
 
 	public static void main(String[] args)
 	{

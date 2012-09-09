@@ -6,8 +6,6 @@ package pl.vlo.biojpks.client;
 
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -56,9 +54,10 @@ public class ClientGUI extends JFrame
 	private final static Logger			logger	= LoggerFactory.getLogger(ClientGUI.class);
 	private StyledDocument				quePane;
 	private StyledDocument				chatPane;
-	private String						nick;
+	private String						nick = null;
+	private Client						client;
+	private GetLogin					getlogin;
 
-	private Client client;
 	/**
 	 * @throws HeadlessException
 	 */
@@ -66,10 +65,9 @@ public class ClientGUI extends JFrame
 	{
 		super();
 		this.client = client;
+		getlogin = new GetLogin(this, "Podaj swój nick");
 		setName("bioJPKS");
 		setTitle("bioJPKS");
-		// setPreferredSize(new Dimension(800, 600));
-
 		layout = new BorderLayout();
 		window = new JPanel(layout);
 		add(window);
@@ -116,30 +114,15 @@ public class ClientGUI extends JFrame
 		status = new JTable(model);
 		sorter = new TableRowSorter<TableModel>(status.getModel());
 		status.setRowSorter(sorter);
-		// status.getColumnModel().getColumn(0).setMaxWidth(200);
-		// status.getColumnModel().getColumn(1).setPreferredWidth(20);
-		// status.getColumnModel().getColumn(1).setMaxWidth(20);
 		JScrollPane scrollPane = new JScrollPane(status);
 		status.setFillsViewportHeight(true);
 		add(scrollPane, BorderLayout.EAST);
 
-		// BufferedImage myPicture = null;
-		// try
-		// {
-		// myPicture =
-		// ImageIO.read(ClientGUI.class.getResource("/images/logo.gif"));
-		// }
-		// catch (IOException e)
-		// {
-		// System.out.println("Default image not found.");
-		// e.printStackTrace();
-		// }
 		img = new JLabel(new ImageIcon(ClientGUI.class.getResource("/images/logo.gif")));
 		add(img, BorderLayout.WEST);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
-		setVisible(true);
 	}
 
 	public void showMessage(String nick, String text) // troche mi sie nie
@@ -208,6 +191,16 @@ public class ClientGUI extends JFrame
 		String messText = input.getText();
 		input.setText("");
 		return new Message(nick, messText);
+	}
+
+	public String getNick()
+	{
+		return nick;
+	}
+
+	public void setNick(String nick)
+	{
+		this.nick = nick;
 	}
 
 }
