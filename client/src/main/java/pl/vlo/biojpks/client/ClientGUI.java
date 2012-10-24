@@ -112,6 +112,8 @@ public class ClientGUI extends JFrame
 		data = new Vector<Vector<String>>();
 		model = new DefaultTableModel(data, columnNames);
 		status = new JTable(model);
+		status.getColumnModel().getColumn(0).setMaxWidth(25);
+		status.getColumnModel().getColumn(1).setMaxWidth(15);
 		sorter = new TableRowSorter<TableModel>(status.getModel());
 		status.setRowSorter(sorter);
 		JScrollPane scrollPane = new JScrollPane(status);

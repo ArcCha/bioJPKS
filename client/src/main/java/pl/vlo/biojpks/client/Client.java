@@ -39,7 +39,7 @@ public class Client implements ActionListener
 		Player[] players = new Player[3];
 		players[0] = new Player(3, "franek");
 		players[1] = new Player(5, "kuba");
-		players[2] = new Player(1, "dupad12"); // DUPA = Debilu, upraszczaj
+		players[2] = new Player(1, "cenzura12");
 												// pierdolone algorytmy.
 		Status stat = new Status(3, players);
 		stat.showInGame(gui);
