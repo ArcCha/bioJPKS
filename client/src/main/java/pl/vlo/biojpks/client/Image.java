@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 
 /**
  * @author arccha
- * 
+ * 	Klasa umożliwiająca użytkowanie obrazków.
  */
 public class Image extends GameObject implements Showable
 {
